@@ -1,0 +1,14 @@
+numpy==1.23.1
+scipy==1.11.4
+chumpy==0.70
+scikit-image==0.22.0
+opencv-python==4.8.1.78
+scikit-image==0.22.0
+PyYAML==6.0.1
+face-alignment==1.1.1
+yacs==0.1.8
+kornia
+ninja
+fvcore
+torch==2.1.0
+torchvision==0.16.0

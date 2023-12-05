@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-FaceMeshGenerator.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Intermediate\Build\Win64\x64\MyProject5Editor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h.obj"
+"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp.obj"
+"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Default.rc2.res"
+/OUT:"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\UnrealEditor-FaceMeshGenerator.lib"
