@@ -1,6 +1,6 @@
-"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp"
+C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp
 /I .
-/I "C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Source\FaceMeshGenerator\Private"
+/I C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Source\FaceMeshGenerator\Private
 /I Runtime\Projects\Public
 /I Runtime
 /I Runtime\TraceLog\Public
@@ -273,9 +273,23 @@
 /I ..\Intermediate\Build\Win64\UnrealEditor\Inc\AIModule\UHT
 /I Runtime\AIModule\Public
 /I Runtime\AIModule\Classes
-/I "C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\UnrealEditor\Inc\FaceMeshGenerator\UHT"
-/I "C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Source"
-/I "C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Source\FaceMeshGenerator\Public"
+/I C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\UnrealEditor\Inc\FaceMeshGenerator\UHT
+/I C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Source
+/I C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Source\FaceMeshGenerator\Public
+/I ..\Plugins\Interchange\Runtime\Intermediate\Build\Win64\UnrealEditor\Inc\InterchangePipelines\UHT
+/I ..\Plugins\Interchange\Runtime\Source\Pipelines\Public
+/I ..\Plugins\Interchange\Runtime\Source
+/I ..\Plugins\Interchange\Runtime\Intermediate\Build\Win64\UnrealEditor\Inc\InterchangeFactoryNodes\UHT
+/I ..\Plugins\Interchange\Runtime\Source\FactoryNodes\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\CinematicCamera\UHT
+/I Runtime\CinematicCamera\Public
+/I ..\Plugins\Interchange\Runtime\Intermediate\Build\Win64\UnrealEditor\Inc\InterchangeNodes\UHT
+/I ..\Plugins\Interchange\Runtime\Source\Nodes\Public
+/I ..\Intermediate\Build\Win64\UnrealEditor\Inc\TextureUtilitiesCommon\UHT
+/I Runtime\TextureUtilitiesCommon\Public
+/I ..\Plugins\Enterprise\VariantManagerContent\Intermediate\Build\Win64\UnrealEditor\Inc\VariantManagerContent\UHT
+/I ..\Plugins\Enterprise\VariantManagerContent\Source\VariantManagerContent\Public
+/I ..\Plugins\Enterprise\VariantManagerContent\Source
 /external:W0
 /external:I ThirdParty\mimalloc\include
 /external:I ThirdParty\LibTiff\Source\Win64
@@ -285,12 +299,12 @@
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\shared"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\um"
 /external:I "C:\Program Files (x86)\Windows Kits\10\include\10.0.22621.0\winrt"
-/FI"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Intermediate\Build\Win64\x64\MyProject5Editor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h"
-/FI"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Definitions.FaceMeshGenerator.h"
-/Yu"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Intermediate\Build\Win64\x64\MyProject5Editor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h"
-/Fp"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Intermediate\Build\Win64\x64\MyProject5Editor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h.pch"
-/Fo"C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp.obj"
-/sourceDependencies "C:\Users\ryryk\Documents\Unreal Projects\MyProject5\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp.dep.json"
+/FI"C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Intermediate\Build\Win64\x64\SeniorProjectDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h"
+/FI"C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Definitions.FaceMeshGenerator.h"
+/Yu"C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Intermediate\Build\Win64\x64\SeniorProjectDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h"
+/Fp"C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Intermediate\Build\Win64\x64\SeniorProjectDemoEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.InclOrderUnreal5_1.h.pch"
+/Fo"C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp.obj"
+/sourceDependencies C:\Users\ryryk\Documents\UnrealProjects\SeniorProjectDemo\Plugins\FaceMeshGenerator\Intermediate\Build\Win64\x64\UnrealEditor\Development\FaceMeshGenerator\Module.FaceMeshGenerator.cpp.dep.json
 /Zc:inline
 /nologo
 /Oi

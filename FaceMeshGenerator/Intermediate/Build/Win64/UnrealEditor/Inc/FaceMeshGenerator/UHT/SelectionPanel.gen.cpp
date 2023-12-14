@@ -11,6 +11,7 @@ void EmptyLinkFunctionForGeneratedCodeSelectionPanel() {}
 // Cross Module References
 	COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FDirectoryPath();
+	COREUOBJECT_API UScriptStruct* Z_Construct_UScriptStruct_FFilePath();
 	ENGINE_API UClass* Z_Construct_UClass_UTexture2D_NoRegister();
 	FACEMESHGENERATOR_API UClass* Z_Construct_UClass_USelectionPanel();
 	FACEMESHGENERATOR_API UClass* Z_Construct_UClass_USelectionPanel_NoRegister();
@@ -38,6 +39,24 @@ void EmptyLinkFunctionForGeneratedCodeSelectionPanel() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_OutputSavePath_MetaData[];
 #endif
 		static const UECodeGen_Private::FStructPropertyParams NewProp_OutputSavePath;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_CropImage_MetaData[];
+#endif
+		static void NewProp_CropImage_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_CropImage;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_FlameModelPath_MetaData[];
+#endif
+		static const UECodeGen_Private::FStructPropertyParams NewProp_FlameModelPath;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_ImportTexture_MetaData[];
+#endif
+		static void NewProp_ImportTexture_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ImportTexture;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_MeshFolderName_MetaData[];
+#endif
+		static const UECodeGen_Private::FStrPropertyParams NewProp_MeshFolderName;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -48,6 +67,7 @@ void EmptyLinkFunctionForGeneratedCodeSelectionPanel() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USelectionPanel_Statics::Class_MetaDataParams[] = {
+		{ "AutoCollapseCategories", "Optional" },
 		{ "BlueprintType", "true" },
 		{ "IncludePath", "SelectionPanel.h" },
 		{ "ModuleRelativePath", "Public/SelectionPanel.h" },
@@ -67,9 +87,50 @@ void EmptyLinkFunctionForGeneratedCodeSelectionPanel() {}
 	};
 #endif
 	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USelectionPanel_Statics::NewProp_OutputSavePath = { "OutputSavePath", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(USelectionPanel, OutputSavePath), Z_Construct_UScriptStruct_FDirectoryPath, METADATA_PARAMS(Z_Construct_UClass_USelectionPanel_Statics::NewProp_OutputSavePath_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USelectionPanel_Statics::NewProp_OutputSavePath_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage_MetaData[] = {
+		{ "Category", "Optional" },
+		{ "ModuleRelativePath", "Public/SelectionPanel.h" },
+	};
+#endif
+	void Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage_SetBit(void* Obj)
+	{
+		((USelectionPanel*)Obj)->CropImage = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage = { "CropImage", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(USelectionPanel), &Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage_SetBit, METADATA_PARAMS(Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USelectionPanel_Statics::NewProp_FlameModelPath_MetaData[] = {
+		{ "Category", "Optional" },
+		{ "FilePathFilter", "pkl" },
+		{ "ModuleRelativePath", "Public/SelectionPanel.h" },
+	};
+#endif
+	const UECodeGen_Private::FStructPropertyParams Z_Construct_UClass_USelectionPanel_Statics::NewProp_FlameModelPath = { "FlameModelPath", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Struct, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(USelectionPanel, FlameModelPath), Z_Construct_UScriptStruct_FFilePath, METADATA_PARAMS(Z_Construct_UClass_USelectionPanel_Statics::NewProp_FlameModelPath_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USelectionPanel_Statics::NewProp_FlameModelPath_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture_MetaData[] = {
+		{ "Category", "Optional" },
+		{ "ModuleRelativePath", "Public/SelectionPanel.h" },
+	};
+#endif
+	void Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture_SetBit(void* Obj)
+	{
+		((USelectionPanel*)Obj)->ImportTexture = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture = { "ImportTexture", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, sizeof(bool), sizeof(USelectionPanel), &Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture_SetBit, METADATA_PARAMS(Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture_MetaData)) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_USelectionPanel_Statics::NewProp_MeshFolderName_MetaData[] = {
+		{ "Category", "Optional" },
+		{ "ModuleRelativePath", "Public/SelectionPanel.h" },
+	};
+#endif
+	const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_USelectionPanel_Statics::NewProp_MeshFolderName = { "MeshFolderName", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, 1, nullptr, nullptr, STRUCT_OFFSET(USelectionPanel, MeshFolderName), METADATA_PARAMS(Z_Construct_UClass_USelectionPanel_Statics::NewProp_MeshFolderName_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_USelectionPanel_Statics::NewProp_MeshFolderName_MetaData)) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_USelectionPanel_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_InputFaceImage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_OutputSavePath,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_CropImage,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_FlameModelPath,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_ImportTexture,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_USelectionPanel_Statics::NewProp_MeshFolderName,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_USelectionPanel_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<USelectionPanel>::IsAbstract,
@@ -103,15 +164,15 @@ void EmptyLinkFunctionForGeneratedCodeSelectionPanel() {}
 	}
 	DEFINE_VTABLE_PTR_HELPER_CTOR(USelectionPanel);
 	USelectionPanel::~USelectionPanel() {}
-	struct Z_CompiledInDeferFile_FID_Users_ryryk_Documents_Unreal_Projects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics
+	struct Z_CompiledInDeferFile_FID_Users_ryryk_Documents_UnrealProjects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics
 	{
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
-	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ryryk_Documents_Unreal_Projects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_USelectionPanel, USelectionPanel::StaticClass, TEXT("USelectionPanel"), &Z_Registration_Info_UClass_USelectionPanel, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USelectionPanel), 1501124287U) },
+	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ryryk_Documents_UnrealProjects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo[] = {
+		{ Z_Construct_UClass_USelectionPanel, USelectionPanel::StaticClass, TEXT("USelectionPanel"), &Z_Registration_Info_UClass_USelectionPanel, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(USelectionPanel), 1413523283U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ryryk_Documents_Unreal_Projects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_4210426893(TEXT("/Script/FaceMeshGenerator"),
-		Z_CompiledInDeferFile_FID_Users_ryryk_Documents_Unreal_Projects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_ryryk_Documents_Unreal_Projects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_Users_ryryk_Documents_UnrealProjects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_1089254526(TEXT("/Script/FaceMeshGenerator"),
+		Z_CompiledInDeferFile_FID_Users_ryryk_Documents_UnrealProjects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_Users_ryryk_Documents_UnrealProjects_SeniorProjectDemo_Plugins_FaceMeshGenerator_Source_FaceMeshGenerator_Public_SelectionPanel_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

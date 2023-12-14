@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\ryryk\\documents\\unreal projects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\private\\facemeshgeneratorcommands.cpp",
+        "Source": "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\private\\facemeshgeneratorcommands.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\ryryk\\documents\\unreal projects\\seniorprojectdemo\\plugins\\facemeshgenerator\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\facemeshgenerator\\definitions.h",
-            "c:\\users\\ryryk\\documents\\unreal projects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorcommands.h",
+            "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\facemeshgenerator\\definitions.h",
+            "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorcommands.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\coreminimal.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\coretypes.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\hal\\platform.h",
@@ -644,7 +644,7 @@
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\slatecore\\public\\styling\\slatewidgetstyle.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\slatecore\\uht\\slatewidgetstyle.generated.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\slatecore\\uht\\slatetypes.generated.h",
-            "c:\\users\\ryryk\\documents\\unreal projects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorstyle.h",
+            "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorstyle.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\slatecore\\public\\styling\\slatestyle.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\slatecore\\public\\styling\\styledefaults.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\misc\\paths.h",

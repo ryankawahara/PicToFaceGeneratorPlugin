@@ -26,6 +26,9 @@ public class FaceMeshGenerator : ModuleRules
 			new string[]
 			{
 				"Core",
+                "InterchangePipelines",
+                "InterchangeEngine",
+                "DesktopPlatform"
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);

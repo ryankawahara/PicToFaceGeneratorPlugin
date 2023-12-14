@@ -1,11 +1,11 @@
 {
     "Version": "1.2",
     "Data": {
-        "Source": "c:\\users\\ryryk\\documents\\unreal projects\\myproject5\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\private\\facemeshgeneratorstyle.cpp",
+        "Source": "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\private\\facemeshgeneratorstyle.cpp",
         "ProvidedModule": "",
         "Includes": [
-            "c:\\users\\ryryk\\documents\\unreal projects\\myproject5\\plugins\\facemeshgenerator\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\facemeshgenerator\\definitions.h",
-            "c:\\users\\ryryk\\documents\\unreal projects\\myproject5\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorstyle.h",
+            "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\facemeshgenerator\\definitions.h",
+            "c:\\users\\ryryk\\documents\\unrealprojects\\seniorprojectdemo\\plugins\\facemeshgenerator\\source\\facemeshgenerator\\public\\facemeshgeneratorstyle.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\coreminimal.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\coretypes.h",
             "c:\\program files\\epic games\\ue_5.2\\engine\\source\\runtime\\core\\public\\hal\\platform.h",

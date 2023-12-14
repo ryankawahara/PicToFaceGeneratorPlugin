@@ -149,7 +149,6 @@ def importAssets(fileNames, destination_folder_name):
     pipeline.import_offset_rotation = unreal.Rotator(90, 0, 0)
     pipeline.import_offset_translation = unreal.Vector(0, 0, 0)
     pipeline.import_offset_uniform_scale = 400.0
-    # pipeline.reimport_strategy = unreal.ReimportStrategyFlags.REIMPORT_STRATEGY_ASK_USER
     pipeline.use_source_name_for_asset = True
 
     # Replace 'obj_file_path' with the actual path to your OBJ file
@@ -162,18 +161,19 @@ def importAssets(fileNames, destination_folder_name):
     import_asset_parameters = unreal.ImportAssetParameters()
     # import_asset_parameters.is_automated = True
 
-
     eas = unreal.get_editor_subsystem(unreal.EditorAssetSubsystem)
     import_asset_parameters.override_pipelines.append(pipeline)
 
     ic_mng = unreal.InterchangeManager.get_interchange_manager_scripted()
-    ic_mng.import_scene(destination_folder_path,source_data,import_asset_parameters)
+    ic_mng.import_scene(destination_folder_path, source_data, import_asset_parameters)
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Your Script Description Here')
     parser.add_argument('--inputImage', required=True, help='Path to the input image')
     parser.add_argument('--outputPath', required=True, help='Path to the DECA results')
+    parser.add_argument('--custom_flame_model', required=False, default=None, type=str,
+                        help='path to custom model')
 
     return parser.parse_args()
 
@@ -270,6 +270,12 @@ def main():
     test_script_path = '"' + convertWindowsToLinux(os.path.join(SCRIPT_PATH, "DECA_Senior_Project", "demos", "test.py")) + '"'
     # commandString = test_script_path
     commandString = f"{deca_script_path} -i {input_image_path} --saveDepth True --saveObj True --exp_path {exp_path} --savefolder {output_result_path}"
+
+    if args.custom_flame_model:
+        unreal.log(args.custom_flame_model)
+
+        commandString += f" --custom_flame_model {convertWindowsToLinux(args.custom_flame_model)}"
+
     unreal.log(venv_bin_path)
 
     unreal.log(commandString)
@@ -282,7 +288,7 @@ def main():
     output_mesh_path = os.path.join(output_dir_path, output_base_name+".obj")
     unreal.log(output_mesh_path)
     unreal.log(os.path.exists(output_mesh_path))
-    importAssets(os.path.join(output_dir_path, output_base_name+".obj"), "FaceMesh")
+    # importAssets(os.path.join(output_dir_path, output_base_name+".obj"), "FaceMesh")
 
 
 main()

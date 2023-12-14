@@ -10,10 +10,27 @@
 #include "ToolMenus.h"
 #include "EditorFramework/AssetImportData.h"
 #include "Engine/Engine.h"
+#include "Widgets/Text/SMultiLineEditableText.h"
 #include <filesystem>
+#include "PluginRunnableThread.h"
+#include "HAL/ThreadManager.h"
+#include "Async/Async.h"
+#include "InterchangePipelineBase.h"
+#include "InterchangeSourceData.h"
+#include "Nodes/InterchangeBaseNodeContainer.h"
+#include "InterchangeGenericAssetsPipeline.h"
+#include "InterchangeManager.h"
+#include "Async/TaskGraphInterfaces.h"
+#include "Widgets/Input/SMultiLineEditableTextBox.h"
+#include "Widgets/Input/SCheckBox.h"
+#include "IDesktopPlatform.h"
+#include "DesktopPlatformModule.h"
+
 
 
 static const FName FaceMeshGeneratorTabName("FaceMeshGenerator");
+
+void ImportAssets(const FString& FileNames, const FString& DestinationFolderName);
 
 #define LOCTEXT_NAMESPACE "FFaceMeshGeneratorModule"
 
@@ -74,30 +91,62 @@ TSharedRef<SDockTab> FFaceMeshGeneratorModule::OnSpawnPluginTab(const FSpawnTabA
 	SelectionPanelObject = GetMutableDefault<USelectionPanel>();
 	PropertyWidget->SetObject(SelectionPanelObject);
 
-
-
-	TSharedRef<SButton> ExecuteButton = SNew(SButton)
+	ExecuteButton = SNew(SButton)
 		.Text(FText::FromString(TEXT("Generate Mesh")))
 		.OnClicked(FOnClicked::CreateRaw(this, &FFaceMeshGeneratorModule::ExecuteButtonClicked));
 
+	TSharedRef<SButton> realButton = ExecuteButton.ToSharedRef();
+
+	FSlateColor darkBackground = FSlateColor(FLinearColor(125.0f / 255.0f, 125.0f / 255.0f, 125.0f / 255.0f, 1.0f));
+
+	ConsoleDisplay = SNew(SMultiLineEditableTextBox);
+	ConsoleDisplay->SetIsReadOnly(true);
+	ConsoleDisplay->SetTextBoxBackgroundColor(darkBackground);
+	TSharedRef<SMultiLineEditableTextBox> console = ConsoleDisplay.ToSharedRef();
+	ImportTextureCheckbox = SNew(SCheckBox);
+	TSharedRef<SCheckBox>textureCheckbox = ImportTextureCheckbox.ToSharedRef();
+
 	return SNew(SDockTab)
 		.TabRole(ETabRole::NomadTab)
-		[			SNew(SVerticalBox)
+		[SNew(SVerticalBox)
 
-			// Use our newly created widgets here!
+		// Use our newly created widgets here!
 
-				+ SVerticalBox::Slot()
-				.FillHeight(15.0)
+		+SVerticalBox::Slot()
+		.AutoHeight()
+		[
+			PropertyWidget.ToSharedRef()
+		]		
+		+ SVerticalBox::Slot()
+		.Padding(FMargin(10.0f, 0.0f, 0.0f, 20.0f))
+		.FillHeight(2.5)
+		.MaxHeight(24)
+		.HAlign(HAlign_Center)
+		[
+			realButton
+		]
+		+ SVerticalBox::Slot()
+		.FillHeight(7.5)
+		.HAlign(HAlign_Fill)
 				[
-					PropertyWidget.ToSharedRef()
-				]
-				+ SVerticalBox::Slot()
-				.FillHeight(2.5)
-				.HAlign(HAlign_Center)
-				[
-					ExecuteButton
+					console
 				]
 		];
+}
+
+void FFaceMeshGeneratorModule::OnTaskCompleted()
+{
+
+	if (FPlatformTLS::GetCurrentThreadId() == ENamedThreads::GameThread)
+	{
+		// Code is running on the main thread (Game Thread)
+		UE_LOG(LogTemp, Warning, TEXT("Code is running on the main thread"));
+	}
+	else
+	{
+		// Code is running on a background thread
+		UE_LOG(LogTemp, Warning, TEXT("Code is running on a background thread"));
+	}
 }
 
 FReply FFaceMeshGeneratorModule::ExecuteButtonClicked()
@@ -109,11 +158,14 @@ FReply FFaceMeshGeneratorModule::ExecuteButtonClicked()
 
 		FDirectoryPath OutputSavePath = SelectionPanelObject->OutputSavePath;
 
+
 		if (SelectedMesh)
 		{
-			//FString MeshName = SelectedMesh->GetPathName();
-			FString MeshName = SelectedMesh->AssetImportData->GetFirstFilename();
-			UE_LOG(LogTemp, Warning, TEXT("Selected Mesh Name: %s"), *MeshName);
+		
+			originalMeshName = SelectedMesh->AssetImportData->GetFirstFilename();
+
+			FString imageSource = originalMeshName;
+
 			std::filesystem::path filePath = std::filesystem::current_path();
 			std::filesystem::path directory = filePath.parent_path();
 
@@ -126,29 +178,51 @@ FReply FFaceMeshGeneratorModule::ExecuteButtonClicked()
 			std::string combinedPathStr = combinedPath.string();
 			FString testCommand = FString(combinedPathStr.c_str());
 			FString pluginsPath = FPaths::ProjectPluginsDir();
+
+			if (SelectionPanelObject->CropImage) {
+
+				FString cropExecute = pluginsPath + FString("FaceMeshGenerator/crop.py");
+				const FString FileName = FPaths::GetBaseFilename(imageSource);
+				const FString extension = FPaths::GetExtension(imageSource);
+				const FString cropName = FileName + "_crop" + "." + extension;
+
+				FString cropCommand = FString((TEXT("py ") + cropExecute)) + FString(" --inputImage ") + '"' + imageSource + '"' + FString(" --outputFolderName ") + SelectionPanelObject->MeshFolderName;
+				GEngine->Exec(NULL, *cropCommand);
+
+
+				IDesktopPlatform* DesktopPlatform = FDesktopPlatformModule::Get();
+				if (DesktopPlatform)
+				{
+
+					FString temp = DesktopPlatform->GetUserTempPath();
+					// Now you can use 'temp' for further processing.
+					FString tempImagePath = FPaths::Combine(temp, cropName);
+					UE_LOG(LogTemp, Warning, TEXT("Temp folder is: %s"), *tempImagePath);
+					imageSource = tempImagePath;
+
+				}
+
+			}
+
 			FString execute = pluginsPath + FString("FaceMeshGenerator/execute.py");
 			std::filesystem::path outputPath = std::filesystem::relative(*OutputSavePath.Path, directory);
-			UE_LOG(LogTemp, Warning, TEXT("Output: %s"), outputPath.c_str());
 
-
-
-			UE_LOG(LogTemp, Warning, TEXT("Execute: %s"), *execute);
-			UE_LOG(LogTemp, Warning, TEXT("Plugin Path: %s"), *pluginsPath);
-
-
-
-			FString command = FString((TEXT("py ") + execute)) + FString(" --inputImage ") + '"' + MeshName + '"' + FString(" --outputPath ") + '"' + OutputSavePath.Path + '"';
+			FString command = FString((TEXT("py ") + execute)) + FString(" --inputImage ") + '"' + imageSource + '"' + FString(" --outputPath ") + '"' + OutputSavePath.Path + '"';
 			UE_LOG(LogTemp, Warning, TEXT("Command: %s"), *command);
 
+			uint32 ThreadId = FPlatformTLS::GetCurrentThreadId();
+			FString ThreadName = FThreadManager::Get().GetThreadName(ThreadId);
+			UE_LOG(LogTemp, Warning, TEXT("Main thread running in: %s"), *ThreadName);
 
-			GEngine->Exec(NULL, *command);
 
-
-
+			PluginRunnableThread* Worker = new PluginRunnableThread(*imageSource, *pluginsPath, OutputSavePath, ExecuteButton, this);
+			Worker->Start();
 		}
 		else
 		{
+			ConsoleDisplay->SetText(FText::FromString("Selected Mesh is null"));
 			UE_LOG(LogTemp, Warning, TEXT("Selected Mesh is null"));
+
 		}
 	}
 	else
@@ -156,14 +230,42 @@ FReply FFaceMeshGeneratorModule::ExecuteButtonClicked()
 		UE_LOG(LogTemp, Warning, TEXT("CustomSettings is null"));
 	}
 
-
-
 	return FReply::Handled();
 }
 
 void FFaceMeshGeneratorModule::PluginButtonClicked()
 {
 	FGlobalTabmanager::Get()->TryInvokeTab(FaceMeshGeneratorTabName);
+}
+
+void FFaceMeshGeneratorModule::OnWorkerThreadComplete() {
+
+	uint32 ThreadId = FPlatformTLS::GetCurrentThreadId();
+	FString ThreadName = FThreadManager::Get().GetThreadName(ThreadId);
+	UE_LOG(LogTemp, Warning, TEXT("back on running in: %s"), *ThreadName);
+
+	FGraphEventRef GameThreadTask = FFunctionGraphTask::CreateAndDispatchWhenReady([this]()
+		{
+			// This code will run on the GameThread
+			UE_LOG(LogTemp, Warning, TEXT("ExecuteOnGameThread on GameThread"));
+			uint32 ThreadId = FPlatformTLS::GetCurrentThreadId();
+			FString ThreadName = FThreadManager::Get().GetThreadName(ThreadId);
+			UE_LOG(LogTemp, Warning, TEXT("back on running in: %s"), *ThreadName);
+		}, TStatId(), nullptr, ENamedThreads::GameThread);
+
+}
+
+void FFaceMeshGeneratorModule::UpdateUIFromMainThread(bool change)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Button stuff"))
+}
+
+
+void ImportAssets(const FString& FileNames, const FString& DestinationFolderName)
+{
+	// Create an instance of InterchangeGenericAssetsPipeline
+	//UInterchangeGenericAssetsPipeline Pipeline;
+	UE_LOG(LogTemp, Warning, TEXT("Filename: %s"), *FileNames);
 }
 
 void FFaceMeshGeneratorModule::RegisterMenus()
